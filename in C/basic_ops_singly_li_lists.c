@@ -25,6 +25,12 @@ void insertAtEnd(struct ListNode** head, int val){
     temp -> next = newNode;
 }
 
+void insertAtBeg(struct ListNode **head, int val){
+    struct ListNode* newNode = createNewNode(val);
+    newNode -> next = *head;
+    *head = newNode;
+}
+
 void display(struct ListNode* head){
     while (head != NULL){
         printf("%d -> ", head -> val);
@@ -39,6 +45,7 @@ int main(){
     insertAtEnd(&head, 20);
     insertAtEnd(&head, 30);
     insertAtEnd(&head, 40);
+    insertAtBeg(&head,1);
     display(head);
     return 0;
 }
