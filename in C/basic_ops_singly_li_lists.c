@@ -31,6 +31,26 @@ void insertAtBeg(struct ListNode **head, int val){
     *head = newNode;
 }
 
+void insertAtPos(struct ListNode** head, int pos, int val){
+    if (pos == 0){
+        insertAtBeg(head,val);
+        return;
+    }
+    int i = 0;
+    struct ListNode* newNode = createNewNode(val);
+    struct ListNode* temp = *head;
+    while (i < pos - 1 && temp != NULL){
+        temp = temp -> next;
+        i++;
+    }
+    if (temp == NULL){
+        printf("Index out of range.\n");
+        return;
+    }
+    newNode -> next = temp -> next;
+    temp -> next = newNode;
+}
+
 int countElements(struct ListNode* head){
     int count = 0;
     while (head != NULL){
@@ -54,7 +74,8 @@ int main(){
     insertAtEnd(&head, 20);
     insertAtEnd(&head, 30);
     insertAtEnd(&head, 40);
-    insertAtBeg(&head,1);
+    insertAtBeg(&head,0);
+    insertAtPos(&head,5,50);
 
     int count = countElements(head);
     printf("%d\n", count);
