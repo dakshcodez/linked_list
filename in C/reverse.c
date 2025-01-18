@@ -33,6 +33,7 @@ void display(struct ListNode* head){
     printf("NULL");
 }
 
+///////////////////////////////////////////////////////////////////
 void reverse(struct ListNode** head){
     struct ListNode* old = NULL;
     struct ListNode* curr = *head;
@@ -46,6 +47,7 @@ void reverse(struct ListNode** head){
     }
     *head = old;
 }
+///////////////////////////////////////////////////////////////////
 
 int main(){
     struct ListNode* head = NULL;
