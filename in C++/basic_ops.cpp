@@ -37,6 +37,36 @@ class LinkedList{
             cout<<"NULL"<<endl;
         }
 
+        void deleteNode(int val) {
+            if (head == nullptr) return;
+        
+            Node* current = head;
+            Node* prev = nullptr;
+        
+            // Traverse until the node with the value is found
+            while (current && current->val != val) {
+                prev = current;
+                current = current->next;
+            }
+        
+            // Value not found
+            if (current == nullptr) {
+                cout << "Node with value " << val << " not found." << endl;
+                return;
+            }
+        
+            // Node to delete is the head
+            if (current == head) {
+                head = head->next;
+                delete current;
+                return;
+            }
+        
+            // Node is in the middle or end
+            prev->next = current->next;
+            delete current;
+        }        
+
         ~LinkedList(){
             Node* current = head;
             while (current){
@@ -55,6 +85,7 @@ int main(){
     l1.add(4);
     l1.add(5);
     l1.display();
+    l1.deleteNode(6);
     l1.add(6);
     l1.display();
     return 0;
